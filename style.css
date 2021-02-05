@@ -71,15 +71,12 @@ nav > * {
     right: 10px;
     font-size: 15px;
     color: rgb(161, 161, 161);
-    transition: 250ms all ease-in-out;
+    transition: 100ms all ease-in-out;
 }
 
-.remove-book i {
-    transition: 250ms all ease-in-out;
-}
-
-.remove-book i:hover {
-    filter: brightness(0.8);
+.remove-book:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
 }
 
 input:required {

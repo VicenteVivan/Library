@@ -116,6 +116,10 @@ randomTitles = [
 ];
 
 let myLibrary = [];
+if (localStorage.getItem("myLibrary") != null) {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    addBookToLibrary();
+}
 
 function Book(title, author, pages, read = false) {
     this.author = author;
@@ -156,11 +160,7 @@ function addBookToLibrary() {
         author.innerText = book.author;
         pages.innerText = `${book.pages} pages`;
         //Putting the Elements Together
-        card.innerHTML += `<button
-                    type="button"
-                    id=${index}
-                    class="btn remove-book"
-                    ><i class="fa fa-trash remove-book"" aria-hidden="true"></i></button>`;
+        card.innerHTML += `<i class="fa fa-trash remove-book"" id=${index}></i>`;
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(readStatus);
@@ -170,13 +170,17 @@ function addBookToLibrary() {
         document.getElementById("books").appendChild(card);
         //Remove Book Button
         $(String(index)).addEventListener("click", (event) => {
-            delete myLibrary[Number(event.target.id)];
+            myLibrary.splice(Number(event.target.id), 1);
+            localStorage.clear();
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             addBookToLibrary();
         });
         readStatus.addEventListener("click", (event) => {
             book.toggleRead();
             addBookToLibrary();
         });
+        //Save in Local Storage
+        localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     });
 }
 
