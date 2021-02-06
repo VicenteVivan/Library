@@ -117,7 +117,10 @@ randomTitles = [
 
 let myLibrary = [];
 if (localStorage.getItem("myLibrary") != null) {
-    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    lastLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    lastLibrary.forEach((element) => {
+        myLibrary.push(new Book(element.title, element.author, element.pages, element.read));
+    });
     addBookToLibrary();
 }
 
@@ -143,7 +146,9 @@ function addBookToLibrary() {
         let card = document.createElement("div");
         card.classList = "book-card";
         let title = document.createElement("h2");
-        let author = document.createElement("h4");
+        let divider = document.createElement("hr");
+        let author = document.createElement("h6");
+        author.classList.add("author");
         let footer = document.createElement("div");
         footer.classList = "cardFooter";
         let pages = document.createElement("span");
@@ -219,7 +224,7 @@ $("add").addEventListener("click", (event) => {
         title.value = "";
         author.value = "";
         pages.value = "";
-        myLibrary.push(newBook);
+        myLibrary.unshift(newBook);
         addBookToLibrary();
     }
 });
