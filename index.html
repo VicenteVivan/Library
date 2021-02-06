@@ -15,6 +15,7 @@
             integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
             crossorigin="anonymous"
         />
+        <link rel="shortcut icon" href="book.svg" type="image/x-icon" />
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <title>Library</title>
@@ -50,9 +51,13 @@
                     <input class="form-check-input" type="checkbox" id="read" />
                     <label class="form-check-label" for="readScwitch">Read</label>
                 </div>
-                <button type="button" class="btn btn-outline-light mt-3" id="random">Random</button>
+                <button type="button" class="btn btn-outline-light mt-3" id="random">
+                    <i class="fa fa-random" aria-hidden="true"></i>
+                </button>
                 <div class="mb-3">
-                    <button class="btn col-12 btn-primary mt-4" id="add">Add</button>
+                    <button class="btn col-12 btn-outline-light mt-4" id="add">
+                        Add <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
         </div>
